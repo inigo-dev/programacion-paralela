@@ -1,0 +1,8 @@
+<div class="comment">
+  <div class="comment-header">
+    <%= render partial: 'shared/user_details', locals: { user: comment.user, size: 'small' } %>
+  </div>
+  <div class="comment-body">
+    <%= comment.parsed_text.html_safe %>
+  </div>
+</div>

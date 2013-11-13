@@ -1,0 +1,77 @@
+@import "mixins";
+
+body {
+  background-color: $light-gray;
+}
+
+.inner-nav {
+  padding: 20px 0;
+  background-color: #ffffff;
+}
+
+.inner-nav .tab {
+  margin: 0 10px;
+  vertical-align: middle;
+  font-size: $medium-font-size;
+  line-height: 30px;
+}
+
+.light-gray {
+  color: $light-gray;
+}
+
+.medium-gray {
+  color: $medium-gray;
+}
+
+.post-item {
+  padding: 20px;
+  margin: 10px;
+  @include white_box;
+}
+
+.profile-picture-large {
+  width: 90px;
+  height: 90px;
+  @include rounded(45px);
+}
+
+.profile-picture-medium {
+  width: 70px;
+  height: 70px;
+  @include rounded(35px);
+}
+
+.profile-picture-small {
+  width: 50px;
+  height: 50px;
+  @include rounded(25px);
+}
+
+.leaderboard {
+  background-color: $light-blue;
+  color: white;
+}
+
+.leaderboard .container .profile-picture-large {
+  margin: 10px 0;
+}
+
+.space-top {
+  margin-top: 20px;
+}
+
+.space-left {
+  margin-left: 20px;
+}
+
+.user-names > h2 {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.user-names .nickname {
+  font-size: $big-font-size;
+}
+
+

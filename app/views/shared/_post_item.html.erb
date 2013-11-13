@@ -1,0 +1,27 @@
+<div class="post-item span3">
+  <div class="post-header">
+    <div class="pull-left">
+      <h2><%= link_to post.title, post_url(post) %></h2>
+    </div>
+    <div class="pull-right">
+      <span class="medium-gray post-author">por <%= truncate post.user.nickname, length: 10 %></span>
+    </div>
+    <div class="clearfix"></div>
+  </div>  
+  <div class="post-body">
+    <p>             
+      <%= truncate sanitize(post.parsed_content, tags: %w(h1 h2 pre)), length: 150 %>
+    </p>
+  </div>
+  <div class="post-footer">
+    <div class="pull-left post-tags">
+      <% post.tags.each do |tag| %>
+        <span class="label tag"><%= tag.name %></span>
+      <% end %>
+    </div>
+    <div class="pull-right medium-gray">
+      <i class="icon-eye-open"></i> <%= post.views %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>

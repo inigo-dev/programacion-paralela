@@ -1,0 +1,10 @@
+<div class="pull-left">
+  <%= link_to image_tag(user.profile_picture_url, :class => "profile-picture-#{size}"), profile_url(user.nickname) %>
+</div>
+<div class="pull-left space-left">
+  <p>
+    <strong><%= link_to user.full_name, profile_url(user.nickname) %> <br /></strong>
+    <%= link_to @post.user.nickname, profile_url(user.nickname) %>
+  </p>        
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1><%= @post.title %></h1>
+</div>
+<div class="row">
+  <div class="span9">
+    <% @post.tags.each do |tag| %>
+      <span class="label"><%= tag.name %></span>
+    <% end %>  
+  </div>
+  <div class="span3 text-right">
+    <%= post_status(@post) %>
+  </div>
+</div>
+<div class="post-body space-top">
+  <%= @post.parsed_content.html_safe %>
+</div>
+<div class="actions">
+  <div class="pull-right space-left">
+    <%= form_for :approve, url: approve_admin_post_url(@post) do |f| %>
+      <%= f.submit 'Aprobar', :class => 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div class="pull-right">
+    <%= form_for :reject, url: reject_admin_post_url(@post) do |f| %>
+      <%= f.submit 'Rechazar', :class => 'btn btn-danger' %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -1,0 +1,22 @@
+development:
+  github:
+    key: "f435bcdefb266a45ab97"
+    secret: "b8d024c5528d386710e666427c59fd08e131af9f"
+  facebook:
+    key: "242669935890768"
+    secret: "34e829d06c8e07e3218f55e9f6689e22"
+  twitter:
+    key: "NZBbQfy1EPGoEgtNanpQ"
+    secret: "CpEEf0IiIjOV6PNo2vfbpC8lPwaH9TpjJcbEx8FRGg"
+    
+    
+production:
+  github:
+    key: "ac7e5fcb55d7cd4b5a56"
+    secret: "7755c25235d5bd3cf57c0785db0395dd1f57432d"
+  facebook:
+    key: "242669935890768"
+    secret: "34e829d06c8e07e3218f55e9f6689e22"
+  twitter:
+    key: "NZBbQfy1EPGoEgtNanpQ"
+    secret: "CpEEf0IiIjOV6PNo2vfbpC8lPwaH9TpjJcbEx8FRGg"

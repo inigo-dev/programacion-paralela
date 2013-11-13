@@ -1,0 +1,27 @@
+<div class="inner-nav">
+  <div class="container">
+    <div class="pull-left">
+      <%= link_to 'Explorar', '#', :class => 'tab' %>
+      <%= link_to 'Feed', '#', :class => 'tab' %>    
+    </div>
+    <div class="pull-right">    
+      <%= link_to '#', :class => 'btn btn-primary' do %>
+        <i class="icon-search"></i>
+      <% end %>
+    </div>
+    <div class="clearfix"></div>  
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      <h2>Trending</h2>
+    </div>
+    <div class="span9">
+      <% @posts.each do |post| %>
+        <%= render partial: 'shared/post_item', locals: { post: post } %>
+      <% end %>
+    </div>
+  </div>
+</div>

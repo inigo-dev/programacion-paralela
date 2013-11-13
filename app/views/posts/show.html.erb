@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="post">
+    <div class="post-title">
+      <div class="pull-left">
+        <h1><%= @post.title %></h1>
+      </div>
+      <div class="pull-right author-details">
+        <%= render partial: 'shared/user_details', locals: { user: @post.user, size: 'medium' } %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="post-tags">
+      <% @post.tags.each do |tag| %>
+        <%= link_to '#', :class => 'tag' do %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
+      <% end %>      
+    </div>
+    <div class="post-body">
+      <% if @current_user and @current_user.owns? @post %>
+        <div class="text-right">
+          <%= link_to 'Editar', edit_post_url(@post), :class => 'btn' %>
+        </div>
+      <% end %>
+      <%= @post.parsed_content.html_safe %>    
+    </div>
+  </div>
+  
+  <div class="post-comments">    
+
+    <% @post.comments.each do |comment| %>
+      <%= render partial: 'shared/comment', locals: {comment: comment} %>
+    <% end %>
+
+    <div class="comment-form-wrapper">
+      <% if @current_user %>
+        <%= form_for [@post, @post.comments.build] do |f| %>
+          <%= f.text_area :text, :class => 'input-block-level', :rows => 5 %>
+          <%= f.submit 'Agregar', :class => 'btn btn-primary' %>
+        <% end %>
+      <% else %>
+        <p>
+          Por favor <%= link_to 'inicia sesi&oacute;n'.html_safe, '#' %> para 
+          agregar un comentario
+        </p>
+      <% end %>
+    </div>    
+  </div>
+</div>
+
+

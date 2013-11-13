@@ -1,0 +1,55 @@
+<script type="text/javascript">
+
+  $(function(){
+    var tag_input = $('#tag-input');
+    
+    tag_input.tagsManager({
+      hiddenTagListName: 'post[tag_values]',
+      prefilled: gon.post.tag_values,
+      tagsContainer: $('#tags-container')
+    }); 
+    
+    tag_input.typeahead({
+      name: 'tags',
+      prefetch: '/tags.json',
+      limit: 15
+    }).on('typeahead:selected', function (e, d) { 
+      tag_input.tagsManager("pushTag", d.value); 
+    });
+       
+    var preview = $('#preview');
+    $('#post_content').keyup(function(e){
+      preview.html(markdown.toHTML( $(this).val() ));
+    });
+    
+
+  });
+</script>
+<div class="flip-container container">
+  <div class="flipper">
+    <div class="front row">
+      <div class="back span8 offset2">
+        <%= bootstrap_form_for @post, html: { :class => 'post-form' } do |f| %>
+          <div class="field">
+            <%= f.text_field :title, placeholder: 'T&iacute;tulo'.html_safe, :class => 'input-block-level' %>
+          </div>
+          <div class="field">
+            <%= f.text_area :content, :class => 'input-block-level', :rows => 20 %>
+          </div>
+          <div class="field">
+            <span id="tags-container"></span>
+            <%= text_field_tag :tags, '', :id => 'tag-input', :placeholder => 'Etiquetas', :class => 'input-xxlarge' %>
+          </div>
+          <div class="actions text-right">
+            <%= f.submit 'Continuar', :class => 'btn btn-primary' %>
+          </div>        
+        <% end %>
+      </div>    
+    </div> 
+    <div class="back row">
+      <div id="preview" class="span8 offset2"></div> 
+    </div>  
+  </div>
+</div>
+
+

@@ -1,0 +1,10 @@
+<%= stylesheet_link_tag 'admin/splash/login' %>
+<%= form_for :login, :url => admin_splash_authenticate_url, :html => {:id => 'sign-in' } do |f| %>
+  <div class="field">
+    <%= f.text_field :email, placeholder: 'email', :class => 'input-block-level' %>
+  </div>  
+  <div class="field">
+    <%= f.password_field :password, placeholder: 'password', :class => 'input-block-level' %>
+  </div>  
+  <%= f.submit 'Login', :class => 'btn btn-primary' %>
+<% end %>
