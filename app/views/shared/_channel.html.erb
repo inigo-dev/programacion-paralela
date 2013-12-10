@@ -1,0 +1,30 @@
+<div class="channel">
+  <div class="channel-header">
+    <div class="pull-left">
+      <span class="channel-name"><%= channel.name %></span>
+    </div>
+    <div class="pull-right">
+      <% if @current_user %>
+        <% klass = @current_user.follows?(channel) ? '' : 'hidden' %>
+        <%= link_to 'Siguiendo', subscription_url(channel), 
+                :class => "btn btn-success btn-mini unfollow #{klass}", 
+                data: { 
+                  method: :delete, 
+                  channel_id: channel.id, 
+                  remote: true 
+                } %>
+                
+        <% klass = @current_user.follows?(channel) ? 'hidden' : '' %>
+        <%= form_for @current_user.subscriptions.build, remote: true, html: {:class => "no-margin follow #{klass}"}, data: { channel_id: channel.id } do |f| %>
+          <%= f.hidden_field :tag_id, value: channel.id %>
+          <%= f.submit 'Seguir', :class => 'btn btn-primary btn-mini' %>
+        <% end %>
+
+      <% end %>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="channel-stats">
+    <i class="icon-user"></i> <%= channel.users.count(:id) %> <i class="icon-file-alt"></i> <%= channel.posts.count(:id) %>
+  </div>
+</div>

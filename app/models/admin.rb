@@ -2,6 +2,7 @@ class Admin < ActiveRecord::Base
 
   validates :name, :surname, :email, :encrypted_password, presence: true
   validates :password, confirmation: true, length: { minimum: 6 }, if: :needs_password?
+  validates :email, uniqueness: true
   
   SALT = 'pr0gr4m4c10n.P4r4l3l4'  
 

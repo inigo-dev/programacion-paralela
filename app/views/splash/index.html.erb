@@ -1,26 +1,24 @@
-<div class="inner-nav">
-  <div class="container">
-    <div class="pull-left">
-      <%= link_to 'Explorar', '#', :class => 'tab' %>
-      <%= link_to 'Feed', '#', :class => 'tab' %>    
-    </div>
-    <div class="pull-right">    
-      <%= link_to '#', :class => 'btn btn-primary' do %>
-        <i class="icon-search"></i>
-      <% end %>
-    </div>
-    <div class="clearfix"></div>  
-  </div>
-</div>
-
-<div class="container">
+<%= render partial: 'splash_header' %>
+<div class="container">  
   <div class="row">
     <div class="span3">
-      <h2>Trending</h2>
+      <% if @channels.any? %>
+        <% @channels.each do |channel| %>
+          <%= render partial: 'shared/channel', locals: { channel: channel } %>
+        <% end %>
+      <% elsif @query %>
+        Espera pronto los canales especiales
+      <% end %>
     </div>
     <div class="span9">
-      <% @posts.each do |post| %>
-        <%= render partial: 'shared/post_item', locals: { post: post } %>
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+          <%= render partial: 'shared/post_item', locals: { post: post } %>
+        <% end %>      
+      <% else %>
+        <p>
+          Nadie ha escrito nada :(
+        </p>
       <% end %>
     </div>
   </div>

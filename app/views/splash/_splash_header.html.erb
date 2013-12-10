@@ -1,0 +1,33 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'splash/header' %>
+<% end %>
+<div class="inner-nav" id="tab-nav-container">
+  <div class="container">
+    <div class="pull-left">
+      <%= link_to 'Explorar', root_url, :class => 'tab' %>
+      <%= link_to 'Feed', feed_url, :class => 'tab' %>    
+    </div>
+    <div class="pull-right">    
+      <%= link_to '#', :class => 'btn btn-primary', id: 'toggle-search-bar' do %>
+        <i class="icon-search"></i>
+      <% end %>
+    </div>
+    <div class="clearfix"></div>  
+  </div>
+</div>
+<div class="inner-nav blue-inner-nav" id="search-bar-container">
+  <div class="container">
+    <%= form_tag search_url, :id => 'search-form', :class => 'no-margin' do %>  
+      <div class="pull-left">
+        <i class="icon-search"></i> <%= text_field_tag :query, '', autocomplete: 'off', placeholder: 'Escribe algo' %>      
+      </div>
+      <div class="pull-right">
+        <%= link_to '#', :class => 'remove', id: 'toggle-navbar' do %>
+          <i class="icon-remove"></i>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
+
+  </div>
+</div>

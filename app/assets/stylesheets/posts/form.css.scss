@@ -14,6 +14,7 @@
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  @include rounded(0px);
 }
 
 .post-form textarea:focus,
@@ -32,40 +33,4 @@
 
 .post-form .field {
   margin: 15px 0;
-}
-
-/* entire container, keeps perspective */
-.flip-container {
-	perspective: 1000;
-	-webkit-perspective: 1000;
-}
-
-/* flip the pane when hovered */
-.flip-container.rotate .flipper {
-	transform: rotateY(180deg);
-}
-
-/* flip speed goes here */
-.flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
-	position: relative;
-}
-
-/* hide back of pane during swap */
-.front, .back {
-	backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-	z-index: 2;
-}
-
-/* back, initially hidden pane */
-.back {
-	transform: rotateY(180deg);
 }

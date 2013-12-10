@@ -1,50 +1,108 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'posts/show' %>
+<% end %>
 <div class="container">
-  <div class="post">
-    <div class="post-title">
-      <div class="pull-left">
-        <h1><%= @post.title %></h1>
-      </div>
-      <div class="pull-right author-details">
-        <%= render partial: 'shared/user_details', locals: { user: @post.user, size: 'medium' } %>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="post-tags">
-      <% @post.tags.each do |tag| %>
-        <%= link_to '#', :class => 'tag' do %>
-          <span class="label"><%= tag.name %></span>
-        <% end %>
-      <% end %>      
-    </div>
-    <div class="post-body">
-      <% if @current_user and @current_user.owns? @post %>
-        <div class="text-right">
-          <%= link_to 'Editar', edit_post_url(@post), :class => 'btn' %>
+  <div class="row">
+    <div class="span9">
+      <div class="post">
+        <div class="post-title">
+          <div class="pull-left">
+            <h1><%= @post.title %></h1>
+          </div>
+          <div class="pull-right author-details">
+            <%= render partial: 'shared/user_details', locals: { user: @post.user, size: 'medium' } %>
+          </div>
+          <div class="clearfix"></div>
         </div>
-      <% end %>
-      <%= @post.parsed_content.html_safe %>    
-    </div>
-  </div>
-  
-  <div class="post-comments">    
+        <div class="post-tags">
+          <% @post.tags.each do |tag| %>
+            <%= link_to search_url(query: tag.name), :class => 'tag' do %>
+              <span class="label"><%= tag.name %></span>
+            <% end %>
+          <% end %>      
+        </div>
+        <div class="post-body">
+          <% if @current_user and @current_user.owns? @post %>
+            <div class="text-right space-bottom">
+              <%= link_to 'Editar', edit_post_url(@post), :class => 'btn' %>
+            </div>
+          <% end %>
+          <%= @post.parsed_content.html_safe %>    
+          <% if @post.code_blocks.any? %>
+            <ul class="nav nav-tabs">
+              <% @post.code_blocks.each do |code_block| %>
+                <li>
+                  <%= link_to code_block.name, "#code-#{code_block.id}", data: { toggle: 'tab' } %>
+                </li>  
+              <% end %>  
+            </ul>
+            <div class="tab-content">
+              <% @post.code_blocks.each do |code_block| %>
+                <%= content_tag :div, id: "code-#{code_block.id}", :class => 'code-tab tab-pane active' do %>
+                  <%= text_area_tag :dummy, code_block.content, :class => 'code-mirror' %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          
+        </div>
+      </div>
+      
+      <div class="post-comments">    
 
-    <% @post.comments.each do |comment| %>
-      <%= render partial: 'shared/comment', locals: {comment: comment} %>
-    <% end %>
-
-    <div class="comment-form-wrapper">
-      <% if @current_user %>
-        <%= form_for [@post, @post.comments.build] do |f| %>
-          <%= f.text_area :text, :class => 'input-block-level', :rows => 5 %>
-          <%= f.submit 'Agregar', :class => 'btn btn-primary' %>
+        <% @post.comments.each do |comment| %>
+          <%= render partial: 'shared/comment', locals: {comment: comment} %>
         <% end %>
-      <% else %>
-        <p>
-          Por favor <%= link_to 'inicia sesi&oacute;n'.html_safe, '#' %> para 
-          agregar un comentario
-        </p>
+
+          
+        <% if @current_user %>
+          <div class="comment-form-wrapper">
+            <ul class="nav nav-tabs" id="comment-tabs">
+              <li class="active space-left">
+                <%= link_to 'Comentario', '#comment-form', data: {toggle: 'tab'} %>
+              </li>
+              <li><%= link_to 'Vista Previa', '#comment-preview', data: {toggle: 'tab'} %></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="comment-form">
+                <p class="text-right">
+                  <small>
+                    <span class="label">Tip</span> Agrega <%= link_to 'markdown', 'http://daringfireball.net/projects/markdown/', target: '_blank' %> a tus comentarios                
+                  </small>
+                </p>
+                
+                <%= form_for [@post, @post.comments.build] do |f| %>
+                  <%= f.text_area :text, :class => 'input-block-level', :rows => 5 %>
+                  <div class="text-right">
+                    <%= f.submit 'Agregar', :class => 'btn btn-primary' %>
+                  </div>              
+                <% end %>
+              </div>
+              <div class="tab-pane" id="comment-preview">
+                <div id="comment-preview-container"></div>
+              </div>          
+            </div>
+          </div>  
+        <% else %>
+          <p>
+            Por favor <%= link_to 'inicia sesi&oacute;n'.html_safe, '#sign-in', data: {toggle: 'modal'} %> para 
+            agregar un comentario
+          </p>
+        <% end %>    
+      </div>
+
+    </div>
+    <div class="span3">
+      <% @post.related_references.each do |reference_type_id, references| %>
+        <div class="references-container">
+          <h3><%= references[0].reference_type.name %></h3>
+          <% references.each do |reference| %>
+            <%= render partial: '/shared/reference', locals: { reference: reference } %>
+          <% end %>
+        </div>
+        
       <% end %>
-    </div>    
+    </div>
   </div>
 </div>
 

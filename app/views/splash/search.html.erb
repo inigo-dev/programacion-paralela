@@ -1,0 +1,28 @@
+<%= render partial: 'splash_header' %>
+<div class="container">  
+  <div>
+    <h2>Resultados para &quot;<%= @query %>&quot;</h2>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <% if @channels.any? %>
+        <% @channels.each do |channel| %>
+          <%= render partial: 'shared/channel', locals: { channel: channel } %>
+        <% end %>
+      <% else %>
+        No hay canales relacionados con &quot;<%= @query %>&quot;
+      <% end %>
+    </div>
+    <div class="span9">
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+          <%= render partial: 'shared/post_item', locals: { post: post } %>
+        <% end %>
+      <% else %>
+        <p class="well">
+          No hay posts relacionados con &quot;<%= @query %>&quot;
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

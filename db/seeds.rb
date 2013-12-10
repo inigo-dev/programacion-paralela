@@ -5,4 +5,8 @@ admin = Admin.create!(
   password: '123456'  
 )
 
+%w(App Libro Liga).each do |type|
+  ReferenceType.create!(name: type)
+end
+
 p "User: #{admin.email} | Pwd: #{admin.password}"

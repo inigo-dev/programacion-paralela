@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>Referencias</h1>
+</div>
+<% if @references.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>T&iacute;tulo</th>
+        <th>URL</th>
+        <th>Tipo</th>
+        <th></th>
+      </tr>  
+    </thead>
+    <tbody>
+      <% @references.each do |reference| %>
+        <tr>
+          <td><%= link_to reference.title, admin_reference_url(reference) %></td>
+          <td><%= link_to reference.url, reference.url, target: '_blank' %></td>
+          <td><%= reference.reference_type.name %></td>
+          <td>
+            <%= link_to 'Editar', edit_admin_reference_url(reference), :class => 'btn btn-mini' %>
+            <%= link_to 'Eliminar', admin_reference_url(reference),
+                :class => 'btn btn-mini btn-danger',
+                :data => { :method => :delete, :confirm => '¿Estas seguro?' } %>
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination @references %>
+<% else %>
+  <p class="well">
+    No se han encontrado referencias
+  </p>
+<% end %>
+<%= link_to 'Agregar', new_admin_reference_url, :class => 'btn btn-primary' %>
+

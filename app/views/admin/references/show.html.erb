@@ -1,0 +1,10 @@
+<div class="page-header">
+  <div class="pull-left">
+      <h1><%= @reference.title %></h1>
+  </div>
+  <div class="pull-right">
+    <%= link_to 'Regresar', admin_references_path, :class => 'btn btn-primary' %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<%= render partial: 'shared/reference', locals: { reference: @reference } %>

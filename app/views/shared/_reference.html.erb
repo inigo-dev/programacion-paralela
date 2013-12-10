@@ -1,0 +1,15 @@
+<div class="media">
+  <%= link_to reference.url, target: '_blank', :class => 'pull-left' do %>
+    <%= image_tag reference.image_url, :class => 'media-object img-polaroid reference-image' %>
+  <% end %>
+  <div class="media-body">
+    <h4 class="media-heading"><%= reference.title %></h4>
+    
+    <p>
+      <%= reference.description %>
+    </p>
+    <p>
+      <%= link_to reference.url, reference.url, target: '_blank' %>
+    </p>    
+  </div>
+</div>

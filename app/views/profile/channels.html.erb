@@ -1,0 +1,11 @@
+<%= render partial: 'profile_header' %>
+<div class="container">
+  <div class="row">
+    <% @channels.each do |channel| %>
+      <div class="span3">
+        <%= render partial: 'shared/channel', locals: { channel: channel } %>
+      </div>
+    <% end %>
+  </div>
+  <%= pagination(@channels) %>
+</div>

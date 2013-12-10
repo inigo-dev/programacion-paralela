@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   
   def new
     @post = @current_user.posts.build
+    @post.code_blocks.build
     store_post
   end
   
@@ -37,9 +38,12 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    if @current_user and @post.user_id != @current_user.id
+      @post.view!
+    end
   end
   
-  params_for :post, :title, :content, :tag_values
+  params_for :post, :title, :content, :tag_values, code_blocks_attributes: [:id, :_destroy, :name, :content]
   
   protected
     def store_post

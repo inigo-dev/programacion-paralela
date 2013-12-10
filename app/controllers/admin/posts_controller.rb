@@ -1,4 +1,6 @@
 class Admin::PostsController < Admin::SharedController
+  
+  add_breadcrumb 'posts', :admin_posts_url
 
   def index
     @posts = Post.includes(:user, :tags).order("status", "created_at DESC").page(params[:page])

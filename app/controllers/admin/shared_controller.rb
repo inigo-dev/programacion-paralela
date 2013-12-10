@@ -1,6 +1,8 @@
 class Admin::SharedController < ApplicationController
   layout 'backend'
   
+  add_breadcrumb 'home', :admin_root_url
+  
   before_filter :require_admin_session
 
   protected

@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>Blog</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "backend", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= viewport_meta_tag(:maximum_scale => "1.0") %>
     <%= csrf_meta_tags %>
     <%= include_gon %>
+    <%= yield :head %>
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top hidden-print">
@@ -19,6 +20,11 @@
           </a>
           <%= link_to 'logo', admin_root_url, :class => 'brand' %>
           <div class="container nav-collapse collapse">
+            <ul class="nav">
+              <li><%= link_to 'Posts', admin_posts_url %></li>
+              <li><%= link_to 'Tags', admin_tags_url %></li>
+              <li><%= link_to 'Referencias', admin_references_url %></li>
+            </ul>
             <ul class="nav pull-right">              
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -40,7 +46,8 @@
     <div class="container">
       <div class="space-top">
         <%= bootstrap_flash %>
-      </div>      
+      </div>
+      <%= render_breadcrumbs %>      
       <%= yield %>
     </div>  
 

@@ -43,6 +43,20 @@
   margin: 10px 0;
 }
 
+.comment-form-wrapper {
+  background-color: #ffffff;
+  margin: 10px 0;
+  border: 3px solid #dddddd;
+}
+
+.comment-form-wrapper #comment-tabs {
+  margin-top: 10px;
+}
+
+.comment-form-wrapper .tab-pane {
+  padding: 0 20px;
+}
 .comment-body {
   margin-top: 10px;
 }
+

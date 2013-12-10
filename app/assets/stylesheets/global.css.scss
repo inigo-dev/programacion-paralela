@@ -16,6 +16,10 @@ body {
   line-height: 30px;
 }
 
+.blue-inner-nav {
+  background-color: $light-blue;
+}
+
 .light-gray {
   color: $light-gray;
 }
@@ -61,6 +65,10 @@ body {
   margin-top: 20px;
 }
 
+.space-bottom {
+  margin-bottom: 20px;
+}
+
 .space-left {
   margin-left: 20px;
 }
@@ -74,4 +82,117 @@ body {
   font-size: $big-font-size;
 }
 
+.reference-image {
+  width: 90px;
+  height: 90px;
+}
+
+.references-container {
+  @include white_box;
+  padding: 3px 15px 8px 15px;
+  margin: 10px 0;
+  @include rounded(3px);
+}
+
+.references-container h3 {
+  text-transform: uppercase;
+  color: $darker-gray;
+}
+
+.channel {
+  @include white_box;
+  padding: 5px 8px;
+  @include rounded(3px);
+  margin: 10px 0;
+}
+
+.channel-header {
+  margin-bottom: 8px;
+}
+
+.channel-name {
+  color: $darker-gray;
+  font-size: $medium-font-size;
+}
+
+.channel-stats {
+  color: $medium-gray;
+}
+
+.social-account {
+  background-color: #FAFAFA;
+  @include rounded(3px);
+  padding: 5px 8px;
+}
+
+.social-account .social-provider {
+  font-size: $medium-font-size;
+}
+
+.vcard {
+  @include white_box;
+  padding: 20px;
+  margin: 40px;
+}
+
+.vcard-name {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.vcard-header {
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 8px;
+}
+
+a.social-btn {
+  text-decoration: none;
+  padding: 5px;
+  color: $darker-gray;
+  background-color: $light-gray;
+  margin: 0px 8px;
+  @include rounded(3px);
+  font-size: $medium-font-size;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+#search-bar-container {
+  display: none;
+}
+
+#search-form a,
+#search-form {
+  color: white;
+  a.remove {
+    text-decoration: none;
+    font-size: $big-font-size;
+  }
+}
+
+#search-form {
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    color: white;
+    @include shadowed(0px, 0px, 0px, #000);
+    font-size: $bigger-font-size;
+    height: auto;
+    margin-bottom: 0px;
+  }
+  input[type="text"]::-webkit-input-placeholder {
+    color: white;
+  }
+  input[type="text"]:-moz-placeholder {
+    color: white;
+  }
+  input[type="text"]::-moz-placeholder {
+    color: white;
+  }
+  input[type="text"]:-ms-input-placeholder {
+    color: white;
+  } 
+}
 

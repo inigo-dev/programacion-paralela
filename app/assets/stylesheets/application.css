@@ -15,4 +15,6 @@
  *= require global 
  *= require posts/form
  *= require posts/show
+ *= require codemirror
+ *= require codemirror-ambiance
  */

@@ -1,0 +1,54 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'admin/references/form' %>
+<% end %>
+<%= render partial: 'admin/shared/form_errors', locals: { target: @reference } %>
+<%= form_for [:admin, @reference], html: {:class => 'form-horizontal'} do |f| %>
+  <div class="control-group">
+    <%= f.label :title, 'T&iacute;tulo'.html_safe, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :url, 'URL', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :url %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :reference_type_id, 'Tipo', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :reference_type_id, options_from_collection_for_select(@reference_types, 'id', 'name'), prompt: true %>
+    </div>    
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :description, 'Descripci&oacute;n'.html_safe, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, rows: 5 %>
+    </div>    
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :image, 'Imagen', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :tags, 'Etiquetas', :class => 'control-label' %>
+    <div class="controls">
+      <span id="tags-container"></span>
+      <%= text_field_tag :tags, '', :id => 'tag-input', :placeholder => 'Etiquetas' %>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit 'Continuar', :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', admin_references_url, :class => 'btn' %> 
+  </div>
+<% end %>

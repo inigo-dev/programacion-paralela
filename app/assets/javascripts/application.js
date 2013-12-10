@@ -12,8 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require tagmanager
 //= require markdown
 //= require bootstrap
+//= require bootstrap_confirmation
 //= require typeahead
+//= require codemirror
+//= require codemirror/modes/javascript
+//= require codemirror/modes/ruby
+//= require cocoon

@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>Tags</h1>
+</div>
+<% if @tags.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th></th>
+      </tr>  
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.name %></td>
+          <td><%= tag_type_label(tag) %></td>
+          <td>
+            <%= link_to 'Editar', edit_admin_tag_url(tag), :class => 'btn btn-mini' %>
+            <%= link_to 'Eliminar', admin_tag_url(tag),
+                :class => 'btn btn-mini btn-danger',
+                :data => { :method => :delete, :confirm => '¿Estas seguro?' } %>
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="well">
+    No se han encontrado tags
+  </p>
+<% end %>
+<%= pagination @tags %>

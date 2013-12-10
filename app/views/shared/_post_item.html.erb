@@ -8,19 +8,20 @@
     </div>
     <div class="clearfix"></div>
   </div>  
-  <div class="post-body">
-    <p>             
-      <%= truncate sanitize(post.parsed_content, tags: %w(h1 h2 pre)), length: 150 %>
-    </p>
+  <div class="post-body">        
+    <%= truncate_html post.parsed_content, length: 150 %>
   </div>
   <div class="post-footer">
     <div class="pull-left post-tags">
       <% post.tags.each do |tag| %>
-        <span class="label tag"><%= tag.name %></span>
+        <%= link_to search_url(query: tag.name) do %>
+          <span class="label tag"><%= tag.name %></span>
+        <% end %>
       <% end %>
     </div>
     <div class="pull-right medium-gray">
       <i class="icon-eye-open"></i> <%= post.views %>
+      <i class="icon-comments"></i> <%= post.comments.count(:id) %>
     </div>
     <div class="clearfix"></div>
   </div>

@@ -1,20 +1,34 @@
 class User < ActiveRecord::Base
   has_many :accounts
   has_many :posts
+  has_many :subscriptions
+  has_many :tags, through: :subscriptions
   validates :name, presence: true
   
   def full_name
     "#{self.name} #{self.surname}"
   end
   
+  def feed_posts    
+    Post.approved.joins(:post_tags).where("post_tags.tag_id IN (?)", self.subscriptions.pluck(:tag_id))
+  end
+  
+  def follows?(tag)
+    self.subscriptions.where(tag_id: tag.id).count(:id) > 0
+  end
+  
   def owns?(post)
     post.user_id.eql? self.id
+  end
+  
+  def linked?(provider)
+    self.accounts.where(provider: provider).count(:id) > 0
   end
   
   def add_account(auth_hash)  
     account = self.accounts.where(provider: auth_hash['provider'], uid: auth_hash['uid']).first
     if account.nil?
-      account = self.accounts.create(provider: auth_hash['provider'], uid: auth_hash['uid'])
+      account = self.accounts.create_from_auth_hash(auth_hash)
     end
     account
   end

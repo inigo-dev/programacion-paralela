@@ -1,0 +1,19 @@
+<div class="leaderboard">
+  <div class="container">
+    <div class="pull-left">
+      <%= image_tag @user.profile_picture_url, :class => 'profile-picture-large' %>
+    </div>
+    <div class="user-names pull-left space-left">      
+      <h2><%= @user.full_name %></h2>
+      <p class="nickname"><%= @user.nickname %></p>
+    </div>
+    <div class="clearfix"></div>  
+  </div>  
+</div>
+<div class="inner-nav">
+  <div class="container">
+    <%= link_to 'Posts', profile_url(nickname: @user.nickname), :class => 'tab'%>
+    <%= link_to 'Canales', profile_channels_url(nickname: @user.nickname), :class => 'tab' %>
+    <%= link_to 'Informaci&oacute;n'.html_safe, profile_information_url(nickname: @user.nickname), :class => 'tab' %>
+  </div>
+</div>

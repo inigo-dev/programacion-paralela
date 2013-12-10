@@ -18,8 +18,12 @@ gem 'omniauth-twitter'
 gem 'redcarpet'
 gem 'gon'
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', '~> 0.2.5'
 gem 'pygmentize'
+gem 'carrierwave'
+gem 'truncate_html'
+gem 'cocoon'
+gem 'codemirror-rails'
 
 group :doc do
   gem 'sdoc', require: false

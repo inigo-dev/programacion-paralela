@@ -2,7 +2,7 @@ module ApplicationHelper
 
   ALERT_TYPES = [:error, :info, :success, :warning]
 
-  def provider_auth_url(provider)
+  def provider_auth_url(provider)    
     "/auth/#{provider}"
   end
   

@@ -1,0 +1,29 @@
+<%= render partial: 'splash_header' %>
+<div class="container">
+  <% if @current_user %>
+    <% if @posts.any? %>
+      <div class="row">
+        <% @posts.each do |post| %>
+          <%= render partial: 'shared/post_item', locals: { post: post } %>
+        <% end %>
+      </div>
+      <%= pagination @posts %>
+    <% else %>
+      <p class="well space-top">
+        Parece que no hay nada aqu&iacute; ¿Por qu&eacute; no te suscribes a <%= link_to 'nuevos canales', profile_channels_url(nickname: @current_user.nickname) %>?
+      </p>
+    <% end %>
+  <% else %>
+    <div class="hero-unit space-top">
+      <h1>El contenido que te interesa aparece aqu&iacute;</h1>
+      <p>
+        Reg&iacute;strate para suscribirte a los canales que te interesan
+        y encuentra lo que buscas aqu&iacute;
+      </p>
+      <p>
+        <%= link_to 'Registrarse', '#sign-up', :class => 'btn btn-primary', data: { toggle: 'modal' } %>
+        <%= link_to 'Iniciar sesi&oacute;n'.html_safe, '#sign-in', :class => 'btn', data: { toggle: 'modal' } %>
+      </p>
+    </div>
+  <% end %>
+</div>

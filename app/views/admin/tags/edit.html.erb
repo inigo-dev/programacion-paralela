@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>Editar tag</h1>
+</div>
+<%= render partial: 'admin/shared/form_errors', locals: { target: @tag } %>
+<%= form_for [:admin, @tag], html: {:class => 'form-horizontal'} do |f| %>
+  <div class="control-group">
+    <%= f.label :name, 'Nombre', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :featured, 'Featured?', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :featured %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Continuar', :class => 'btn btn-primary' %>
+    <%= link_to 'Cancelar', admin_tags_url, :class => 'btn' %>
+  </div>
+<% end %>
