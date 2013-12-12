@@ -34,8 +34,12 @@ class User < ActiveRecord::Base
   end
   
   def self.create_from_auth_hash(auth_hash)
-    name = auth_hash['info']['first_name'] || auth_hash['info']['name'].split(" ")[0]
-    surname = auth_hash['info']['last_name'] || auth_hash['info']['name'].split(" ").drop(1).join(" ")
+    if auth_hash['info']['name']
+      name = auth_hash['info']['first_name'] || auth_hash['info']['name'].split(" ")[0]
+      surname = auth_hash['info']['last_name'] || auth_hash['info']['name'].split(" ").drop(1).join(" ")
+    else
+      name = auth_hash['info']['nickname']
+    end
     profile_picture = auth_hash['info']['image'] || "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/211228_691516660_1206690031_q.jpg"
     self.create(
         name: name,

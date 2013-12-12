@@ -40,7 +40,7 @@
     <column id="COL6" populated="true" UUID="f282029c-38fe-4b33-8e34-181d7675d199" autoIncrement="false" autoIncrementSequenceName="users_surname_seq" defaultValue="" name="surname" nullable="1" physicalName="surname" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL7" populated="true" UUID="eeceb724-ffd5-4291-bf17-2610c92020eb" autoIncrement="false" autoIncrementSequenceName="users_nickname_seq" defaultValue="" name="nickname" nullable="1" physicalName="nickname" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL7" populated="true" UUID="eeceb724-ffd5-4291-bf17-2610c92020eb" autoIncrement="false" autoIncrementSequenceName="users_nickname_seq" defaultValue="" name="nickname" nullable="1" physicalName="nickname" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL8" populated="true" UUID="2572173a-b5e3-4529-9eb5-06513540135f" autoIncrement="false" autoIncrementSequenceName="users_email_seq" defaultValue="" name="email" nullable="1" physicalName="email" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -81,7 +81,7 @@
     <column id="COL18" populated="true" UUID="4737f646-ca0d-4ba2-bb89-4fcc10b48ca9" autoIncrement="false" autoIncrementSequenceName="accounts_uid_seq" defaultValue="" name="uid" nullable="0" physicalName="uid" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL19" populated="true" UUID="e28139bd-da58-46b7-9236-a3aa663f3069" autoIncrement="false" autoIncrementSequenceName="accounts_nickname_seq" defaultValue="" name="nickname" nullable="1" physicalName="nickname" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL19" populated="true" UUID="e28139bd-da58-46b7-9236-a3aa663f3069" autoIncrement="false" autoIncrementSequenceName="accounts_nickname_seq" defaultValue="" name="nickname" nullable="1" physicalName="nickname" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL20" populated="true" UUID="ea383570-9fce-4f35-89ff-367ed8a847ea" autoIncrement="false" autoIncrementSequenceName="accounts_user_id_seq" defaultValue="" name="user_id" nullable="0" physicalName="user_id" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >

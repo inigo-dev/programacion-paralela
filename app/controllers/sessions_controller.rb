@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     session[:social_redirect_url] = params[:url]
     redirect_to "/auth/#{params[:provider]}"
   end
+  
   def create
     if session[:user_id]
       @user = User.find(session[:user_id])
