@@ -1,7 +1,11 @@
 module ApplicationHelper
 
   ALERT_TYPES = [:error, :info, :success, :warning]
-
+  
+  def password_placeholder(record)
+    record.new_record? ? 'Password' : '(sin modificar)'
+  end
+  
   def provider_auth_url(provider)    
     "/auth/#{provider}"
   end

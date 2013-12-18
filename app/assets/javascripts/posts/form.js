@@ -52,7 +52,8 @@ $(function(){
   $('.nested-fields textarea').each(function(index, element){
     CodeMirror.fromTextArea(element, {
       mode: "ruby",
-      lineNumbers: true
+      lineNumbers: true,
+      theme: 'ambiance'
     });
   });
   
@@ -60,7 +61,8 @@ $(function(){
     var textarea = $(insertedItem).find('textarea')[0];
     CodeMirror.fromTextArea(textarea, {
       mode: "ruby",
-      lineNumbers: true
+      lineNumbers: true,
+      theme: 'ambiance'
     });
   });
 

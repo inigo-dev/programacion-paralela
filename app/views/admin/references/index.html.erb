@@ -8,6 +8,7 @@
         <th>T&iacute;tulo</th>
         <th>URL</th>
         <th>Tipo</th>
+        <th>Tags</th>
         <th></th>
       </tr>  
     </thead>
@@ -17,6 +18,11 @@
           <td><%= link_to reference.title, admin_reference_url(reference) %></td>
           <td><%= link_to reference.url, reference.url, target: '_blank' %></td>
           <td><%= reference.reference_type.name %></td>
+          <td>
+            <% reference.tags.each do |tag| %>
+              <span class="label"><%= tag.name %></span>
+            <% end %>
+          </td>
           <td>
             <%= link_to 'Editar', edit_admin_reference_url(reference), :class => 'btn btn-mini' %>
             <%= link_to 'Eliminar', admin_reference_url(reference),

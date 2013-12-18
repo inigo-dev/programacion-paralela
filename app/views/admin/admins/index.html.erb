@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Administradores</h1>
+</div>
+<% if @admins.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th></th>
+      </tr>  
+    </thead>
+    <tbody>
+      <% @admins.each do |admin| %>
+        <tr>
+          <td><%= admin.full_name %></td>
+          <td><%= admin.email %></td>
+          <td>
+            <%= link_to 'Editar', edit_admin_admin_url(admin), :class => 'btn btn-mini' %>
+            <%= link_to 'Eliminar', admin_admin_url(admin),
+                :class => 'btn btn-mini btn-danger',
+                :data => { :method => :delete, :confirm => '¿Estas seguro?' } %>
+            
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= pagination @admins %>
+<% else %>
+  <p class="well">
+    No se han encontrado administradores
+  </p>
+<% end %>
+<%= link_to 'Agregar', new_admin_admin_url, :class => 'btn btn-primary' %>
+

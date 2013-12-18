@@ -24,6 +24,11 @@ Blog::Application.routes.draw do
     post 'splash/authenticate', to: 'splash#authenticate'
     
     resources :posts do
+      collection do
+        post :approve_multiple
+        post :reject_multiple
+      end
+      
       member do
         post :approve
         post :reject
@@ -32,6 +37,7 @@ Blog::Application.routes.draw do
     
     resources :tags, only: [:index, :edit, :update, :destroy]
     resources :references
+    resources :admins, except: :show
     
   end
 

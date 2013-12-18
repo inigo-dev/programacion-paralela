@@ -50,5 +50,23 @@ class Admin::PostsController < Admin::SharedController
   end
   
   
+  def approve_multiple
+    @posts = Post.where("id IN (?)", params[:ids])
+    @posts.approve!
+    
+    respond_to do |format|
+      format.html { redirect_to admin_posts_url, notice: 'Los posts han sido aprobados' }
+    end 
+  end  
+  
+  def reject_multiple
+    @posts = Post.where("id IN (?)", params[:ids])
+    @posts.reject!
+    
+    respond_to do |format|
+      format.html { redirect_to admin_posts_url, notice: 'Los posts han sido rechazados' }
+    end 
+  end
+  
 
 end

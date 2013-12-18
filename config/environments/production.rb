@@ -59,7 +59,7 @@ Blog::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( backend.css admin/splash/login.css posts/show.js posts/form.js admin/references/form.js profile/information.js splash/header.js )
+  config.assets.precompile += %w( backend.css admin/splash/login.css posts/show.js posts/form.js admin/references/form.js profile/information.js splash/header.js admin/posts/index.js )
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

@@ -9,6 +9,11 @@
           <div class="field">
             <%= f.text_field :title, placeholder: 'T&iacute;tulo'.html_safe, :class => 'input-block-level' %>
           </div>
+          <p class="text-right">
+            <small>
+              <span class="label">Tip</span> Agrega <%= link_to 'markdown', 'http://daringfireball.net/projects/markdown/', target: '_blank' %> a tus comentarios                
+            </small>
+          </p>
           <div class="field">
             <%= f.text_area :content, :class => 'input-block-level', :rows => 20 %>
           </div>

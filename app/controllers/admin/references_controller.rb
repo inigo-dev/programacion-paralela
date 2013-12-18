@@ -4,7 +4,7 @@ class Admin::ReferencesController < Admin::SharedController
   before_filter :get_reference_types, only: [:new,:edit]
   
   def index
-    @references = Reference.includes(:reference_type).order(:title).page(params[:page])
+    @references = Reference.includes(:reference_type, :tags).order(:title).page(params[:page])
     
     respond_to do |format|
       format.html

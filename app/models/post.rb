@@ -48,6 +48,14 @@ class Post < ActiveRecord::Base
     self.status.eql? STATUS[:unapproved]
   end
   
+  def self.approve!
+    self.update_all(status: STATUS[:approved])
+  end
+  
+  def self.reject!
+    self.update_all(status: STATUS[:unapproved])
+  end
+  
   def approve!
     self.update_attribute(:status, STATUS[:approved])
   end
