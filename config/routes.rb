@@ -40,11 +40,13 @@ Blog::Application.routes.draw do
     resources :admins, except: :show
     
   end
-
-  get '/:nickname/channels', to: 'profile#channels', as: :profile_channels  
-  get '/:nickname/information', to: 'profile#information', as: :profile_information
-  patch '/:nickname/update', to: 'profile#update', as: :profile_update
-  get '/:nickname', to: 'profile#show', as: :profile
+  
+  constraints nickname: /[^\/]+/ do
+    get '/:nickname/channels', to: 'profile#channels', as: :profile_channels  
+    get '/:nickname/information', to: 'profile#information', as: :profile_information
+    patch '/:nickname/update', to: 'profile#update', as: :profile_update
+    get '/:nickname', to: 'profile#show', as: :profile
+  end
 
   
 end
