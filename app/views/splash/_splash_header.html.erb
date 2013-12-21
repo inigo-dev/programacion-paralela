@@ -7,8 +7,15 @@
       <%= link_to 'Explorar', root_url, :class => 'tab' %>
       <%= link_to 'Feed', feed_url, :class => 'tab' %>    
     </div>
-    <div class="pull-right">    
-      <%= link_to '#', :class => 'btn btn-primary', id: 'toggle-search-bar' do %>
+    <div class="pull-right">  
+      <% if @current_user %>
+        <%= link_to new_post_url, :class => 'btn btn-info', title: 'Agregar post', 
+            data: {placement: 'bottom', toggle: 'tooltip'} do  %>
+          <i class="icon-pencil"></i>
+        <% end %>
+      <% end %>
+      <%= link_to '#', :class => 'btn btn-info', id: 'toggle-search-bar', title: 'B&uacute;squeda'.html_safe, 
+          data: {placement: 'bottom', toggle: 'tooltip'} do %>
         <i class="icon-search"></i>
       <% end %>
     </div>

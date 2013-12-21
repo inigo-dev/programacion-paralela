@@ -8,12 +8,14 @@
       <% unless provider_nickname.blank? %>
         <p><%= "(#{provider_nickname })"%></p>
       <% end %>
-      <div class="text-right">      
-        <%= link_to 'Eliminar', 
-                    account_url(provider: provider),
-                    :class => 'btn btn-danger btn-mini',
-                    data: { method: :delete } %>
-      </div>
+      <% if @current_user.accounts.size > 1 %>
+        <div class="text-right">      
+          <%= link_to 'Eliminar', 
+                      account_url(provider: provider),
+                      :class => 'btn btn-danger btn-mini',
+                      data: { method: :delete } %>
+        </div>
+      <% end %>
     <% else %>
       <div class="text-right">
         <%= link_to 'Agregar', social_login_url(provider: provider),:class => 'btn btn-mini' %>

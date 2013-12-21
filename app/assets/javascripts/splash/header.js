@@ -6,6 +6,10 @@ $(function(){
       this.initSearchBar();
       this.initToggleSearchBar();
       this.initToggleNavbar();
+      this.initTooltips();
+    },
+    initTooltips: function() {
+      $('[data-toggle="tooltip"]').tooltip();
     },
     initNavbar: function() {
       this.navbar_container = $('#tab-nav-container');

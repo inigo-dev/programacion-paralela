@@ -1,6 +1,10 @@
 class Account < ActiveRecord::Base
   belongs_to :user
   validates :user_id, :provider, :uid, presence: true
+  
+  before_destroy :validate_one_account_left
+  
+  scope :exclude, ->(account) { where("id <> ?", account.id) }
 
   def self.find_or_create_from_auth_hash(auth_hash)
     account = self.where(provider: auth_hash['provider'],uid: auth_hash['uid']).first
@@ -18,4 +22,13 @@ class Account < ActiveRecord::Base
   def profile_url
     "http://#{self.provider}.com/#{self.nickname}"
   end
+  
+  def siblings
+    @siblings ||= self.class.where(user_id: self.user_id).exclude(self)
+  end
+  
+  protected
+    def validate_one_account_left 
+      self.siblings.count(:id) > 0
+    end
 end
