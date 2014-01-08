@@ -14,4 +14,12 @@ module Admin::PostsHelper
     end
     content_tag :span, txt, :class => "label label-#{klass}"
   end
+  
+  def post_status_options(selected)
+    options = []
+    Post::STATUS_TEXT.each_pair do |key, value|
+      options << [value, key]
+    end
+    options_for_select options, selected
+  end
 end

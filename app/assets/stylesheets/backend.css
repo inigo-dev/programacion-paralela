@@ -5,6 +5,7 @@
  *= require pygments-github
  *= require typeahead-bootstrap
  *= require global 
+ *= require bootstrap-select
  *= require_self 
  */
  

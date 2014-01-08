@@ -3,7 +3,21 @@ class Admin::PostsController < Admin::SharedController
   add_breadcrumb 'posts', :admin_posts_url
 
   def index
-    @posts = Post.includes(:user, :tags).order("status", "created_at DESC").page(params[:page])
+    @posts = Post.includes(:user)
+    unless params[:status_id].blank?
+      @posts = @posts.search_by_status(params[:status_id])
+      @status = params[:status_id].to_i
+    end
+    
+    unless params[:tag_id].blank? 
+      @posts = @posts.search_by_tag_id(params[:tag_id])
+      @tag_id = params[:tag_id].to_i
+    end
+    
+    @posts = @posts.order("posts.status", "posts.created_at DESC").page(params[:page])    
+    @tags = Tag.select(:id, :name).order(:name)
+    
+
     
     respond_to do |format|
       format.html

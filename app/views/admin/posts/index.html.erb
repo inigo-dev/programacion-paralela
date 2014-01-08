@@ -4,14 +4,22 @@
 <div class="page-header">
   <h1>Posts</h1>
 </div>
-<% if @posts.any? %>
+<div class="pull-left">
+    <%= form_tag admin_posts_url, method: :get do %>
+      <%= select_tag :status_id, post_status_options(@status), prompt: "Status", :class => 'selectpicker no-margin'  %> 
+      <%= select_tag :tag_id, options_from_collection_for_select(@tags,:id,:name,@tag_id), prompt: "Tag", :class => 'selectpicker no-margin', 'data-live-search' => 'true'  %> 
+      <%= submit_tag 'Filtrar', :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+<div class="pull-right">
+  <%= submit_tag 'Aprobar', :class => 'btn btn-success disabled mass-action', 
+        data: {url: approve_multiple_admin_posts_url } %>
+  <%= submit_tag 'Rechazar', :class => 'btn btn-danger disabled mass-action', 
+        data: {url: reject_multiple_admin_posts_url } %>
+</div>
+<div class="clearfix"></div>
+<% if @posts.any? %>  
   <%= form_tag '#', id: 'posts-form' do %>
-    <div class="text-right">
-      <%= submit_tag 'Aprobar', :class => 'btn btn-success disabled mass-action', 
-            data: {url: approve_multiple_admin_posts_url } %>
-      <%= submit_tag 'Rechazar', :class => 'btn btn-danger disabled mass-action', 
-            data: {url: reject_multiple_admin_posts_url } %>
-    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -47,7 +55,7 @@
       </tbody>
     </table>
   <% end %>
-<% else %>
+<% else %>  
   <p class="well">
     No se han encontrado posts
   </p>

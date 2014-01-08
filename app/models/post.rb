@@ -25,8 +25,16 @@ class Post < ActiveRecord::Base
     :unapproved => 2
   }
   
+  STATUS_TEXT = {
+    STATUS[:new] => "Nuevo",
+    STATUS[:approved] => "Aprobado",
+    STATUS[:unapproved] => "Rechazado"
+  }
+  
   scope :approved, -> { where(status: STATUS[:approved]) }
   scope :latest, -> { order('created_at DESC') }
+  scope :search_by_status, ->(status) { where(status: status ) }
+  scope :search_by_tag_id, ->(tag_id) { joins(post_tags: :tag).where(tags: { id: tag_id } ) }
   
   def self.search(query)
     self.uniq.joins(post_tags: :tag).where("posts.title ILIKE :query OR posts.content ILIKE :query OR tags.name ILIKE :query", query: "%#{query}%")

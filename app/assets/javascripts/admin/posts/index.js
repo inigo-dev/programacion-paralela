@@ -7,6 +7,13 @@ $(function(){
       this.initForm();
       this.initSubmitButtons();
       this.initCheckBoxes();
+      this.initFilters();
+    },
+    initFilters: function() {
+      $('.selectpicker').selectpicker({
+//          style: 'btn-info',
+          width: 100
+      });
     },
     initForm: function() {
       this.form = $('#posts-form');
