@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :tags, through: :subscriptions
   validates :name, presence: true
+  validates :nickname, uniqueness: true
   
   def full_name
     "#{self.name} #{self.surname}"

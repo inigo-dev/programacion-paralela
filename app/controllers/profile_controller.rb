@@ -3,7 +3,8 @@ class ProfileController < ApplicationController
   before_filter :require_session, only: :update
   
   def show
-    
+    Rails.logger.info "[INFO] Current id: #{@current_user.id}"
+    Rails.logger.info "[INFO] Profile id: #{@user.id}"
   end
   
   def channels

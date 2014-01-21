@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
     STATUS[:unapproved] => "Rechazado"
   }
   
+  scope :new_posts, -> { where(status: STATUS[:new]) }
   scope :approved, -> { where(status: STATUS[:approved]) }
   scope :latest, -> { order('created_at DESC') }
   scope :search_by_status, ->(status) { where(status: status ) }

@@ -1,0 +1,10 @@
+<% content_for :title do %>
+  <h1> Existe nuevo contenido disponible </h1>
+<% end %>
+<p>
+  <% if @count > 1 %>
+    Existen <strong><%= @count %></strong> nuevos artículos esperando a ser aprobados
+  <% else %>
+    Existe <strong>1</strong> nuevo artículo esperando a ser aprobado
+  <% end %>
+</p>
