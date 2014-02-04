@@ -12,6 +12,10 @@ class Reference < ActiveRecord::Base
   attr_accessor :tag_values
   after_save :store_tags
   
+  def self.search(query)
+    where("title ILIKE ?", "%#{query}%")
+  end
+  
   def tag_values
     @tag_values ||= self.tags.pluck(:name).join(',')
   end

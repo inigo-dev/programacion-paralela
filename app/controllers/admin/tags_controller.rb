@@ -4,6 +4,11 @@ class Admin::TagsController < Admin::SharedController
   def index
     @tags = Tag.order(:name).page(params[:page])
     
+    if params[:q]
+      @query = params[:q]
+      @tags = @tags.search(params[:q])
+    end
+    
     respond_to do |format|
       format.html
       format.json { render json: @posts }

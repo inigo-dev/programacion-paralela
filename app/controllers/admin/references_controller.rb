@@ -6,6 +6,11 @@ class Admin::ReferencesController < Admin::SharedController
   def index
     @references = Reference.includes(:reference_type, :tags).order(:title).page(params[:page])
     
+    if params[:q]
+      @query = params[:q]
+      @references = @references.search(params[:q])
+    end
+    
     respond_to do |format|
       format.html
       format.json { render json: @references }

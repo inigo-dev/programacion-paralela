@@ -1,6 +1,12 @@
 <div class="page-header">
   <h1>Tags</h1>
 </div>
+<div class="text-right">
+  <%= form_tag '#', method: :get, :class => 'form-search' do %>
+    <%= text_field_tag :q, @query,:class => 'search-query', placeholder: 'Buscar...' %>
+    <%= submit_tag 'Buscar', :class => 'btn' %>
+  <% end %>
+</div>
 <% if @tags.any? %>
   <table class="table table-striped">
     <thead>
